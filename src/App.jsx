@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import React from 'react';
 
+// Afbeeldingen importeren uit de assets-map
+import vsdImage from './assets/VSD-hierarchie.png';
+import vpcImage from './assets/VPC.jpg';
+import handImage from './assets/3d-hand.png';
+import bmcImage from './assets/BMC.jpg';
+
 const sections = [
     { id: 'toepassen', title: 'Toepassen' },
     { id: 'reflecteren', title: 'Reflecteren' },
@@ -28,7 +34,7 @@ function App() {
                 </div>
             ),
             imageAlt: 'VSD Hierarchie',
-            imageSrc: '/VSD-hierarchie.png',
+            imageSrc: vsdImage,
         },
         {
             text: (
@@ -43,7 +49,7 @@ function App() {
                 </div>
             ),
             imageAlt: 'VPC',
-            imageSrc: '/VPC.jpg',
+            imageSrc: vpcImage,
         },
     ];
 
@@ -61,8 +67,8 @@ function App() {
                     </ul>
                 </div>
             ),
-            imageAlt: '3d Hand',
-            imageSrc: '/3d-hand.png',
+            imageAlt: '3D Hand',
+            imageSrc: handImage,
         },
         {
             text: (
@@ -70,13 +76,13 @@ function App() {
                     <h3 className="font-semibold mb-2">Rol: Ondernemende Technoloog</h3>
                     <ul className="list-disc pl-5">
                         <li>Beter communiceren & meer uit comfort zone gaan.</li>
-                        <li>VPC vind ik het lastig om vanuit de cirkel te denken</li>
+                        <li>VPC vind ik het lastig om vanuit de cirkel te denken.</li>
                         <li>BMC helpt je heel erg met verder denken over de doelgroep.</li>
                     </ul>
                 </div>
             ),
             imageAlt: 'BMC',
-            imageSrc: '/BMC.jpg',
+            imageSrc: bmcImage,
         },
     ];
 
@@ -103,7 +109,9 @@ function App() {
                                 key={section.id}
                                 onClick={() => setActiveSection(section.id)}
                                 className={`px-3 py-2 rounded-2xl transition-all duration-200 transform hover:scale-105 ${
-                                    activeSection === section.id ? 'bg-[#9CAFAA] text-white' : 'hover:bg-[#D4CFC4]'
+                                    activeSection === section.id
+                                        ? 'bg-[#9CAFAA] text-white'
+                                        : 'hover:bg-[#D4CFC4]'
                                 }`}
                             >
                                 {section.title}
@@ -115,7 +123,7 @@ function App() {
 
             <main className="container mx-auto p-6">
                 {activeSection === 'toepassen' && (
-                    <section className="transition-opacity duration-500 ease-in-out animate-fade-in">
+                    <section>
                         <h2 className="text-2xl font-semibold mb-4">
                             Toepassen ({toepassenIndex + 1}/{toepassenContent.length})
                         </h2>
@@ -142,11 +150,8 @@ function App() {
                                 isFadingToepassen ? 'opacity-0' : 'opacity-100'
                             }`}
                         >
-                            <div
-                                key={toepassenIndex}
-                                className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3]"
-                            >
-                                <div className="text-[#3B3B3B]">{toepassenContent[toepassenIndex].text}</div>
+                            <div className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3]">
+                                {toepassenContent[toepassenIndex].text}
                             </div>
                             <div className="w-full h-64 bg-white p-2 border border-[#D4CFC4] rounded-2xl overflow-hidden shadow-md shadow-[#E4DCD3]">
                                 <img
@@ -160,7 +165,7 @@ function App() {
                 )}
 
                 {activeSection === 'reflecteren' && (
-                    <section className="transition-opacity duration-500 ease-in-out animate-fade-in">
+                    <section>
                         <h2 className="text-2xl font-semibold mb-4">
                             Reflecteren ({reflecterenIndex + 1}/{reflecterenContent.length})
                         </h2>
@@ -187,11 +192,8 @@ function App() {
                                 isFadingReflecteren ? 'opacity-0' : 'opacity-100'
                             }`}
                         >
-                            <div
-                                key={reflecterenIndex}
-                                className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3]"
-                            >
-                                <div className="text-[#3B3B3B]">{reflecterenContent[reflecterenIndex].text}</div>
+                            <div className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3]">
+                                {reflecterenContent[reflecterenIndex].text}
                             </div>
                             <div className="w-full h-64 bg-white p-2 border border-[#D4CFC4] rounded-2xl overflow-hidden shadow-md shadow-[#E4DCD3]">
                                 <img
@@ -208,17 +210,15 @@ function App() {
                     <section className="transition-opacity duration-500 ease-in-out animate-fade-in">
                         <h2 className="text-2xl flex justify-center font-semibold mb-4">Voorkeur</h2>
                         <div className="flex flex-col items-center justify-center gap-6 text-center">
-                        <div className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3]">
-                                <div className="text-[#3B3B3B] text-left">
-                                    <ul className={'list-disc pl-5 mb-4'}>
-                                        <li>Onderzoekende Aanpak.</li>
-                                        <li>Fijn om voor opdrachtgever te werken.</li>
-                                        <li>Bij deze TLE ook de GDS van onderzoeken toegepast.</li>
-                                        <li>Ondernemende Aanpak.</li>
-                                        <li>Helpt met verder denken aan doelgroep.</li>
-                                        <li>Helpt mij uit mijn comfort zone te gaan.</li>
-                                    </ul>
-                                </div>
+                            <div className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3] text-left">
+                                <ul className="list-disc pl-5 mb-4">
+                                    <li>Onderzoekende Aanpak.</li>
+                                    <li>Fijn om voor opdrachtgever te werken.</li>
+                                    <li>Bij deze TLE ook de GDS van onderzoeken toegepast.</li>
+                                    <li>Ondernemende Aanpak.</li>
+                                    <li>Helpt met verder denken aan doelgroep.</li>
+                                    <li>Helpt mij uit mijn comfort zone te gaan.</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -228,15 +228,15 @@ function App() {
                     <section className="transition-opacity duration-500 ease-in-out animate-fade-in">
                         <h2 className="text-2xl flex justify-center font-semibold mb-4">Nachtkastboek</h2>
                         <div className="flex flex-col items-center justify-center gap-6 text-center">
-                        <div className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3]">
-                            <ul className={'list-disc pl-5 mb-4 text-left'}>
-                                <li>De Starbucks Strategie</li>
-                                <li>Lastig want ik heb geen werknemers.</li>
-                                <li>Hele duidelijke JTBD.</li>
-                                <li>Informatie overbrengen.</li>
-                                <li>Interactief om aandacht te behouden.</li>
-                                <li>Niet teveel text, kleine animaties.</li>
-                            </ul>
+                            <div className="bg-white p-6 border border-[#D4CFC4] rounded-2xl shadow-md shadow-[#E4DCD3] text-left">
+                                <ul className="list-disc pl-5 mb-4">
+                                    <li>De Starbucks Strategie</li>
+                                    <li>Lastig want ik heb geen werknemers.</li>
+                                    <li>Hele duidelijke JTBD.</li>
+                                    <li>Informatie overbrengen.</li>
+                                    <li>Interactief om aandacht te behouden.</li>
+                                    <li>Niet teveel tekst, kleine animaties.</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
